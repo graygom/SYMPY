@@ -214,7 +214,7 @@ if True:
 #      functions with 'DiracDelta' objects or functions containing 'SingularityFunction'
 # -. Risch algorithm ~ a general method for calculating antiderivatives of elementary functions
 # -. for non-elementary definite integrals, sympy using so-called Meijer G-functions 
-# -. Sympy Gamma
+# -. Sympy Gamma ~ like calculus, seeing how to compute the integral by hand
 #
 #
 
@@ -275,7 +275,47 @@ if True:
     print('(12.7) ', int_f_3)
     print('')
 
+    # integrate() method
+
+    x, y = sp.symbols('x, y')
+
+    expr = 42*y**2 - 12*x
+
+    int_expr = expr.integrate(x, y)
+
+    print('(12.8) ', expr)
+    print('(12.8) ', int_expr)
+    print('')
+
+    # instantiate the Integral class and eventually call the doit() method
+
+    # options in case of returning an unevaluated integral
     #
+    # -. changing the method of integration: meijerg, risch, manual
+    # -. manipulating the expression before performing the integration
+    # -. performing a change of variables (or u-substitution) using the transform() method in Integral class
+    #
+
+    # integration capabilities of different CAS over the same dataset of integrals
+    #
+    # --- Rubi (Rule-Based Integrator) ---
+    #  1. it applies an extensitve collection of integration rules to file the optimal
+    #     antiderivative of large classes of mathematical expressions.
+    #  2. the rules are organized as a decision tree on the form of the integrand
+    #  3. the integrator is built on top of Mathematica,
+    #     but the collection of rules is open source,
+    #     meaning anyone could build a Rubi for a given CAS.
+    #
+    # it is clear that integration is one of the weakest points of Sympy. 
+    # one of the reasons is that the risch algorithm implemented on Sympy only supports a small
+    # subset of the full algorithm
+    #
+    
+    
+
+
+
+
 
 
 
