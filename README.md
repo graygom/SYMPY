@@ -1,3 +1,3 @@
 TEXTBOOK
 
-Symbolic Computation with Python and SymPy, Davide Sandona, 4th ed. (2023)
+Davide Sandona, Symbolic Computation with Python and SymPy, 4th ed. (2023)
