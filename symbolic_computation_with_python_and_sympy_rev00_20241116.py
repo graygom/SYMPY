@@ -310,6 +310,56 @@ if True:
     # one of the reasons is that the risch algorithm implemented on Sympy only supports a small
     # subset of the full algorithm
     #
+    # Sympy's Rubi implementation was very difficult to test and maintain,
+    # because the loading of the rules took several minutes (depending on machines) 
+    #
+    # but for now, we are left with the limited integration capabilities of Sympy
+    #
+
+
+
+#----------------------------------------------------
+# 13.1 expression manipulation part 4
+#
+# previous chapters -> emulating handwritten steps with Sympy
+#                   -> thus getting acquainted with different manipulation techniques
+#
+# the following exercises -> working through unexpected problems by applying everything
+#                            we have learned so far as well as trying new techniques
+#
+
+if True:
+
+    # indefinite integral
+
+    Ss, A, R, z, mus, t = sp.symbols('S, A, R, z, mu_s, t', real=True, positive=True, zero=False)
+
+    alpha, beta = sp.symbols('alpha, beta', real=True, zero=False)
+
+    expr = Ss * ( A * sp.exp(alpha * mus * z) + (1 - A) * sp.exp(-beta * mus * z)) * \
+           sp.exp(-mus * z) / (sp.S(4) * sp.pi * R**2)
+
+    # sp.S(5) / 2 -> rational number, reducing the amount of postprocessing in later steps
+
+    E = sp.integrate(expr.subs(z, 6000 - sp.S(5) / 2 * t), t, conds='none')
+
+    #
+    
+    print('(13.1) ', expr)
+    print('(13.1) ', E)
+
+    # a situation where an integral is taking a long time to be solved,
+    # or the result os unecessarily long 
+    #
+    # 1. manipulate the expression before the integration
+    # 2. change the method of integration
+    # 3. if the expression to integrate appears to be complicated, try both points 1 and 2
+
+    # approach #1: expression manipulation
+
+    expr = expr.expand()
+
+    print('(13.2) ', expr)
     
     
 
